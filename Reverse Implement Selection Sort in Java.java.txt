@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class ReverseImplementSelectionSort {
+
+    public static void main(String[] args){
+        // This is the unsorted array
+        Integer[] unsortedArray = new Integer[]{8, 2, 1, 4, 6, 10, 20};
+
+        System.out.println("The array after using selection sort:\n");
+        Integer[] sortedArray = selectionSort(unsortedArray);
+
+        System.out.println("The new sorted array: " + Arrays.toString(sortedArray));
+    }
+
+    public static Integer[] selectionSort(Integer[] inputArray){
+        // Create a copy of the input array to avoid modifying the original array
+        Integer[] sortedArray = Arrays.copyOf(inputArray, inputArray.length);
+
+        for (Integer i = 0; i < sortedArray.length - 1; i++) {
+            Integer minIndex = i;
+            for (Integer j = i + 1; j < sortedArray.length; j++) {
+                if (sortedArray[j] < sortedArray[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            // Swap the minimum element with the current element
+            Integer getIndex = sortedArray[minIndex];
+            sortedArray[minIndex] = sortedArray[i];
+            sortedArray[i] = getIndex;
+        }
+
+        return sortedArray;
+    }
+}
